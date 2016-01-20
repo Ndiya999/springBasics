@@ -1,0 +1,22 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // spring libs
+    compile 'org.springframework:spring-core:3.2.8.RELEASE'
+    compile 'org.springframework:spring-context:3.2.8.RELEASE'
+    //compile 'org.springframework:spring-aop:3.2.8.RELEASE'
+    compile 'org.springframework:spring-aspects:3.2.8.RELEASE'
+
+
+    // AspectJ libs
+    //compile 'org.aspectj:aspectjrt:1.6.7'
+    // Junit
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
