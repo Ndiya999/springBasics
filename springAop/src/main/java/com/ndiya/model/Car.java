@@ -11,8 +11,13 @@ public class Car {
     public void drive() {
         System.out.println(String.format("Driving car model: %s at spead: %s", this.make, this.maxSpead));
     }
-    private void stop() {
-        System.out.println("Car stopped !!");
+    public String stop(String make) {
+        return String.format("The car: %s has stopped.", make);
+    }
+
+    public void multiArgs(String make, String speed, int count) {
+        System.out.print(String.format("The car: %s has count: %s and Speed: %s",
+                make, count, speed));
     }
 
     public void throwException() {

@@ -18,8 +18,8 @@ public class MainApp {
 
         Car vw = ctx.getBean("vw", Car.class);
         vw.setMake("toyota");
-        String tmp = vw.getMaxSpead();
-        vw.throwException();
+       // vw.multiArgs("Gesheshe", "280km/s", 12);
+       String tmp = vw.getMaxSpead();
 
     }
 }
