@@ -30,10 +30,18 @@
   http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <aop:aspectj-autoproxy/>
-<bean id="circle" class="com.ndiya.model.Circle" >
-    <property name="radi" value="20.00" />
-    <property name="circumference" value="400.00" />
-</bean>
+
+    <bean id="circle" class="com.ndiya.model.Circle" >
+        <property name="radi" value="20.00" />
+        <property name="circumference" value="400.00" />
+    </bean>
+
+    <bean id="vw" class="com.ndiya.model.Car" >
+        <property name="make" value="VW" />
+        <property name="model" value="golf 6" />
+        <property name="maxSpead" value="280kms" />
+    </bean>
+
     <bean class="com.ndiya.aop.LoggingAspect" />
     
 </beans>

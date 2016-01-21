@@ -1,5 +1,6 @@
 package com.ndiya;
 
+import com.ndiya.model.Car;
 import com.ndiya.model.Circle;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,5 +15,11 @@ public class MainApp {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-context.xml");
         Circle circle = ctx.getBean("circle", Circle.class);
         circle.print();
+
+        Car vw = ctx.getBean("vw", Car.class);
+        vw.setMake("toyota");
+        String tmp = vw.getMaxSpead();
+        vw.throwException();
+
     }
 }
