@@ -18,7 +18,7 @@ public class LoggingAspect {
 
     /**
      * <p>
-     *   Before advice: Advice that executes before a
+     *   <b>Before advice:</b> Advice that executes before a
      *   join point, but which does not have the ability
      *   to prevent execution flow proceeding to the join
      *   point (unless it throws an exception).
@@ -31,7 +31,7 @@ public class LoggingAspect {
 
     /**
      * <p>
-     *   After returning advice: Advice to be executed after
+     *   <b>After returning advice:</b> Advice to be executed after
      *   a join point completes normally: for example, if a
      *   method returns without throwing an exception.
      *
@@ -46,7 +46,7 @@ public class LoggingAspect {
 
     /**
      * <p>
-     *   After throwing advice: Advice to be executed
+     *   <b>After throwing advice:</b> Advice to be executed
      *   if a method exits by throwing an exception.
      * </p>
      */
@@ -60,7 +60,7 @@ public class LoggingAspect {
 
     /**
      * <p>
-     *  After (finally) advice: Advice to be executed
+     *  <b>After (finally) advice:</b> Advice to be executed
      *  regardless of the means by which a join point
      *  exits (normal or exceptional return).
      * </p>
@@ -85,6 +85,18 @@ public class LoggingAspect {
         System.out.println(String.format("Logging %s from @After advice. Count %s & Speed %s", make, count, speed));
     }
 
+    /**
+     * <p>
+     *   <b>Around advice:</b> Advice that surrounds a join point such
+     *   as a method invocation. This is the most powerful kind of advice.
+     *   Around advice can perform custom behavior before and after the method invocation.
+     *   It is also responsible for choosing whether to proceed to the join point or
+     *   to shortcut the advised method execution by returning its own return
+     *   value or throwing an exception.
+     * </p>
+     * @param proceedingJoinPoint
+     * @return
+     */
     @Around("allGetters()")
     private Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
 
@@ -98,7 +110,7 @@ public class LoggingAspect {
             throwable.printStackTrace();
         }
         System.out.println("After Finally.");
-        return returnVal;
+        return returnVal; // You're allowed to make modifications to {@code returnVal} before returning.
     }
     /**
      * Example pointcuts.
