@@ -42,6 +42,19 @@
         <property name="maxSpead" value="280kms" />
     </bean>
 
-    <bean class="com.ndiya.aop.LoggingAspect" />
+    <bean id="loggingAspect" class="com.ndiya.aop.LoggingAspect" />
+
+    <bean id="securityAspect" class="com.ndiya.aop.SecurityAspect" />
+
+    <aop:config>
+        <aop:aspect ref="securityAspect" >
+            <!--<aop:after method="xmlConf" pointcut-ref="logMk" />-->
+            <aop:before method="logMakeAdvice" pointcut-ref="logMd" />
+            <!--<aop:pointcut id="logMk" expression="execution(public * xmlJoinpoint())" />-->
+            <aop:pointcut id="logMd" expression="args(make)" />
+        </aop:aspect>
+
+
+    </aop:config>
     
 </beans>

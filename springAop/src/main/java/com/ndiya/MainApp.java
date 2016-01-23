@@ -18,8 +18,10 @@ public class MainApp {
 
         Car vw = ctx.getBean("vw", Car.class);
         vw.setMake("toyota");
-       // vw.multiArgs("Gesheshe", "280km/s", 12);
-       String tmp = vw.getMaxSpead();
+        //vw.multiArgs("Gesheshe", "280km/s", 12);
+       //String tmp = vw.getMaxSpead();
+        //vw.annotatedJoinpoint();
+        vw.xmlJoinpoint();
 
     }
 }

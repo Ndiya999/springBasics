@@ -1,5 +1,7 @@
 package com.ndiya.model;
 
+import com.ndiya.aop.Loggable;
+
 /**
  * Created by ndiyakholwa on 2016/01/20.
  */
@@ -16,8 +18,9 @@ public class Car {
     }
 
     public void multiArgs(String make, String speed, int count) {
-        System.out.print(String.format("The car: %s has count: %s and Speed: %s",
+        System.out.println(String.format("The car: %s has count: %s and Speed: %s",
                 make, count, speed));
+
     }
 
     public void throwException() {
@@ -25,6 +28,21 @@ public class Car {
         if(i == null) {
             throw new NullPointerException("Car has no brakes !!");
         }
+    }
+
+    /**
+     * <p>
+     *   This method is advised by an advice that makes use
+     *   of the @annotation pointcut contruct.
+     * </p>
+     */
+    @Loggable
+    public void annotatedJoinpoint() {
+        System.out.println("Annotted Joinpoint.");
+    }
+
+    public void xmlJoinpoint() {
+        System.out.println("XML config Joinpoint.");
     }
 
     public String getModel() {
