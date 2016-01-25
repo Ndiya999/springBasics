@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://activemq.apache.org/schema/core
+  http://activemq.apache.org/schema/core/activemq-core-5.9.0.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.springframework.org/schema/jms
+  http://www.springframework.org/schema/jms/spring-jms.xsd
+  http://www.springframework.org/schema/jee
+  http://www.springframework.org/schema/jee/spring-jee.xsd
+  http://www.springframework.org/schema/jdbc
+  http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd
+  http://camel.apache.org/schema/spring
+  http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+    <!--<context:annotation-config />-->
+
+    <bean id="sportsEngine" class="com.ndiya.xml.config.Engine" >
+        <property name="capacity" value="6.0" />
+        <property name="cylinders" value="8" />
+        <property name="manufacturer" value="bmw" />
+    </bean>
+
+
+    <bean id="bmw-m3" class="com.ndiya.xml.config.Car" >
+        <property name="eng" ref="sportsEngine" />
+        <property name="model" value="M3" />
+        <property name="maxSpeed" value="330" />
+    </bean>
+
+    <bean id="bmw-m5" class="com.ndiya.xml.config.Car" >
+        <constructor-arg name="eng" ref="sportsEngine" type="com.ndiya.xml.config.Engine" />
+        <constructor-arg name="maxSpeed" value="440" type="int" />
+        <constructor-arg name="model" type="java.lang.String" value="M5" />
+    </bean>
+
+    <bean id="bmw-m6" class="com.ndiya.xml.config.Car" >
+        <constructor-arg name="eng" ref="sportsEngine" index="0" />
+        <constructor-arg name="maxSpeed" value="${M6.maxSpeed}" index="1" />
+        <constructor-arg name="model" value="${M6.model}" index="2" />
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+        <property name="location" value="spring.properties" />
+    </bean>
+<!--
+    <bean id="person" class="com.ndiya.Person" init-method="init" >
+        <property name="name" value="Ndiya" />
+        <property name="age" value="27" />
+        &lt;!&ndash;<property name="car" ref="vw" />&ndash;&gt;
+    </bean>
+
+    <bean id="vw" class="com.ndiya.Car" >
+        <property name="make" value="${Car.make}" />
+        <property name="model" value="${Car.model}" />
+        <property name="maxSpeed" value="${Car.maxSpead}" />
+    </bean>
+
+    <bean id="chv" class="com.ndiya.Car" >
+        <property name="make" value="Chevrolet" />
+        <property name="model" value="El Camino" />
+        <property name="maxSpeed" value="300" />
+    </bean>-->
+
+    <!--<bean class="com.ndiya.SpringBeanPostProcessor" />-->
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver" />
+
+
+
+    <!--<alias name="person" alias="person-alias" />-->
+
+</beans>
